@@ -1,0 +1,30 @@
+<?php
+// module/Student/view/student/student/index.phtml:
+
+$title = 'My students';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('student', ['action' => 'add']) ?>">Add new student</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>GPA</th>
+    <th></th>
+</tr>
+<?php foreach ($students as $student) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($student->id) ?></td>
+        <td><?= $this->escapeHtml($student->name) ?></td>
+        <td><?= $this->escapeHtml($student->gpa) ?></td>
+        <td>
+            <a href="<?= $this->url('student', ['action' => 'edit', 'id' => $student->id]) ?>">Edit</a>
+            <a href="<?= $this->url('student', ['action' => 'delete', 'id' => $student->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
